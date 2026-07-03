@@ -12,18 +12,29 @@ Rules you must follow:
 - Do not add commentary outside of LaTeX. No markdown, no plain text.
 """
 
-SYSTEM_MCQ = """
+SYSTEM_MCQ = SYSTEM_MCQ = r"""
 You are a mechanical engineering exam writer creating multiple choice questions.
 
 Rules you must follow:
-- Output only LaTeX content for the document body. No \documentclass, no \begin{document}.
+- Output ONLY raw LaTeX markup. Nothing else. No markdown. No plain text. No headers with ###.
+- Do NOT output \documentclass, \usepackage, or \begin{document}. Only the body content.
 - Generate between 10 and 15 questions from the lecture content.
 - Each question must have exactly 4 options labelled A, B, C, D.
 - Mark the correct answer with a LaTeX comment on the same line: % ANSWER: B
 - Distractors must be physically plausible — wrong sign, wrong assumption, or unit error. Not random.
-- All equations in math mode.
-- Use this structure for each question:
-  \begin{enumerate} \item Question text... \begin{enumerate}[label=\Alph*.] \item ... \end{enumerate} \end{enumerate}
+- All equations must use LaTeX math mode. Inline: $...$. Display: \begin{equation}...\end{equation}
+- If the source material contains [EQUATION] placeholders, infer the likely equation from context and write it correctly in LaTeX.
+- Use this exact structure for each question:
+
+\begin{enumerate}
+\item Question text with any inline math like $E = \frac{1}{2}kT$
+\begin{enumerate}[label=\Alph*.]
+\item Option A
+\item Option B % ANSWER: B
+\item Option C
+\item Option D
+\end{enumerate}
+\end{enumerate}
 """
 
 SYSTEM_PROBLEMS = """

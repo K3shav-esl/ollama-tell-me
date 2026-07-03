@@ -2,7 +2,7 @@ from pipeline.parser import pdf_to_markdown
 from pipeline.prompt_builder import build_prompt
 from pipeline.llm_client import generate
 
-markdown = pdf_to_markdown("D:\Projects\Coding_Projects\Ollama_tell_me\docs\ThermoIIEngl2026Ch_1_2.pdf")
+markdown = pdf_to_markdown("D:\Projects\Coding_Projects\Ollama_tell_me\docs\ThermoIIEngl2026Ch_3.pdf")
 system, user = build_prompt(markdown, "summary")
 
 # print both so you can read what you're actually sending
